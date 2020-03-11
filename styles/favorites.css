@@ -1,0 +1,17 @@
+.favorites {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.favoriteItem {
+    flex-basis: 27%;
+    border: 1px dotted darkmagenta;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.favoriteItem_image {
+    max-height: 8rem;
+    max-width: 8rem;
+}

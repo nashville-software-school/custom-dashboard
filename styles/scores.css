@@ -1,0 +1,12 @@
+.scores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.score {
+    flex-basis: 27%;
+    border: 1px dotted darkgoldenrod;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}

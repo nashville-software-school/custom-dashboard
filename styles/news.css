@@ -1,0 +1,12 @@
+.news {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.newsItem {
+    flex-basis: 27%;
+    border: 1px dotted darkcyan;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
