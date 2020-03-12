@@ -16,6 +16,15 @@ const render = favoriteCollection => {
 
 const eventHub = document.querySelector("#container")
 
+eventHub.addEventListener("borderSizeChosen", e => {
+    const favorites = document.querySelectorAll(".favoriteItem")
+    favorites.forEach(f => {
+        f.classList = []
+        f.classList.add("favoriteItem")
+        f.classList.add(e.detail.borderSize)
+    })
+})
+
 eventHub.addEventListener("fontChosen", e => {
     const favorites = document.querySelector(".favorites")
     favorites.classList.add(e.detail.fontSize)
