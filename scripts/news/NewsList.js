@@ -8,7 +8,7 @@ export const NewsList = () => {
 
 const render = newsCollection => {
     return `
-        <article class="container__panel scores">
+        <article class="container__panel news">
             ${newsCollection.map(news => NewsItem(news)).join("")}
         </article>
     `
@@ -16,6 +16,27 @@ const render = newsCollection => {
 
 const eventHub = document.querySelector("#container")
 
+eventHub.addEventListener("colorChosen", e => {
+    const favoriteContainer = document.querySelector(".news")
+    favoriteContainer.classList = []
+    favoriteContainer.classList.add("container__panel")
+    favoriteContainer.classList.add("news")
+    favoriteContainer.classList.add(e.detail.color)
+})
+
+eventHub.addEventListener("borderSizeChosen", e => {
+    const allNews = document.querySelectorAll(".newsItem")
+    allNews.forEach(f => {
+        f.classList = []
+        f.classList.add("newsItem")
+        f.classList.add(e.detail.borderSize)
+    })
+})
+
 eventHub.addEventListener("fontChosen", e => {
-    document.querySelector(".scores").classList.add(e.detail.fontSize)
+    const scoreContainer = document.querySelector(".news")
+    scoreContainer.classList = []
+    scoreContainer.classList.add("container__panel")
+    scoreContainer.classList.add("news")
+    scoreContainer.classList.add(e.detail.fontSize)
 })
