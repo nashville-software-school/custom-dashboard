@@ -13,3 +13,9 @@ const render = newsCollection => {
         </article>
     `
 }
+
+const eventHub = document.querySelector("#container")
+
+eventHub.addEventListener("fontChosen", e => {
+    document.querySelector(".scores").classList.add(e.detail.fontSize)
+})

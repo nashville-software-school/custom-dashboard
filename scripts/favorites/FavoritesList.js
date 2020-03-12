@@ -13,3 +13,10 @@ const render = favoriteCollection => {
         </article>
     `
 }
+
+const eventHub = document.querySelector("#container")
+
+eventHub.addEventListener("fontChosen", e => {
+    const favorites = document.querySelector(".favorites")
+    favorites.classList.add(e.detail.fontSize)
+})

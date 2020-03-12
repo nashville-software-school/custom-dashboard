@@ -5,9 +5,9 @@ import { ThemeOptions } from "./theme/ThemeOptions.js"
 
 export const Dashboard = () => {
     return `
+        ${ThemeOptions()}
         ${ScoreList()}
         ${NewsList()}
         ${FavoritesList()}
-        ${ThemeOptions()}
     `
 }

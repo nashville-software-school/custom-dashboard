@@ -13,3 +13,19 @@
 .red {
     background-color: darksalmon;
 }
+
+.xsmall {
+    font-size: 0.4rem;
+}
+
+.small {
+    font-size: 0.6rem;
+}
+
+.large {
+    font-size: 1rem;
+}
+
+.xlarge {
+    font-size: 1.3rem;
+}
