@@ -1,6 +1,8 @@
 import { useFavorites } from "./FavoritesProvider.js"
 import { FavoriteItem } from "./FavoriteItem.js"
 
+const eventHub = document.querySelector("#container")
+let childrenVisible = true
 export const FavoritesList = () => {
     const favoriteItems = useFavorites()
     return render(favoriteItems)
@@ -14,7 +16,20 @@ const render = favoriteCollection => {
     `
 }
 
-const eventHub = document.querySelector("#container")
+eventHub.addEventListener("visibilityToggled", e => {
+    if(e.detail.chosenComponent === "favorites"){
+         const allFavoriteItems = document.querySelectorAll(".favoriteItem")
+         childrenVisible = !childrenVisible
+
+         for (const item of allFavoriteItems) {
+             if(childrenVisible){
+                 item.classList.remove("invisible")
+             } else {
+                 item.classList.add("invisible")
+             }
+         }
+     }
+ })
 
 eventHub.addEventListener("colorChosen", e => {
      const favoritesContainer = document.querySelector(".favorites")
@@ -39,8 +54,7 @@ eventHub.addEventListener("borderSizeChosen", e => {
     const favorites = document.querySelectorAll(".favoriteItem")
     favorites.forEach(f => {
         f.classList = []
-        f.classList.add("favoriteItem")
-        f.classList.add(e.detail.borderSize)
+        f.classList.add("favoriteItem", e.detail.borderSize)
     })
 })
 

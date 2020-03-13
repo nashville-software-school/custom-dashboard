@@ -1,6 +1,8 @@
 import { useScores } from "./ScoreProvider.js"
 import { Score } from "./Score.js"
 
+const eventHub = document.querySelector("#container")
+let childrenVisible = true
 export const ScoreList = () => {
     const scores = useScores()
     return render(scores)
@@ -14,8 +16,15 @@ const render = scoreCollection => {
     `
 }
 
+eventHub.addEventListener("visibilityToggled", e => {
+    if(e.detail.chosenComponent === "sports"){
+         const allSportsItems = document.querySelectorAll(".score")
+         childrenVisible = !childrenVisible
 
-const eventHub = document.querySelector("#container")
+
+         allSportsItems.forEach(item => item.classList.toggle("invisible"))
+     }
+ })
 
 eventHub.addEventListener("colorChosen", e => {
 
@@ -40,8 +49,7 @@ eventHub.addEventListener("borderSizeChosen", e => {
     const favorites = document.querySelectorAll(".score")
     favorites.forEach(f => {
         f.classList = []
-        f.classList.add("score")
-        f.classList.add(e.detail.borderSize)
+        f.classList.add("score", e.detail.borderSize)
     })
 })
 
