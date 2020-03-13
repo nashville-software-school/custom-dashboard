@@ -17,12 +17,23 @@ const render = favoriteCollection => {
 const eventHub = document.querySelector("#container")
 
 eventHub.addEventListener("colorChosen", e => {
-    const favoriteContainer = document.querySelector(".favorites")
-    favoriteContainer.classList = []
-    favoriteContainer.classList.add("container__panel")
-    favoriteContainer.classList.add("favorites")
-    favoriteContainer.classList.add(e.detail.color)
+     const favoritesContainer = document.querySelector(".favorites")
+    favoritesContainer.classList.forEach(singleClass => {
+        let isPresent = false
+        e.detail.allPossibleColors.forEach(color => {
+            if (color === singleClass){
+                isPresent = true
+            }
+
+        });
+        if(isPresent){
+            favoritesContainer.classList.remove(singleClass)
+        }
+    })
+    favoritesContainer.classList.add(e.detail.color)
+
 })
+
 
 eventHub.addEventListener("borderSizeChosen", e => {
     const favorites = document.querySelectorAll(".favoriteItem")
@@ -34,9 +45,18 @@ eventHub.addEventListener("borderSizeChosen", e => {
 })
 
 eventHub.addEventListener("fontChosen", e => {
-    const favoriteContainer = document.querySelector(".favorites")
-    favoriteContainer.classList = []
-    favoriteContainer.classList.add("container__panel")
-    favoriteContainer.classList.add("favorites")
-    favoriteContainer.classList.add(e.detail.fontSize)
+    const favoritesContainer = document.querySelector(".favorites")
+    favoritesContainer.classList.forEach(singleClass => {
+        let isPresent = false
+        e.detail.allPossibleFontSizes.forEach(fontSize => {
+            if (fontSize === singleClass){
+                isPresent = true
+            }
+
+        });
+        if(isPresent){
+            favoritesContainer.classList.remove(singleClass)
+        }
+    })
+    favoritesContainer.classList.add(e.detail.fontSize)
 })

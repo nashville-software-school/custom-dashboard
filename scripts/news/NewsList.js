@@ -17,12 +17,23 @@ const render = newsCollection => {
 const eventHub = document.querySelector("#container")
 
 eventHub.addEventListener("colorChosen", e => {
-    const favoriteContainer = document.querySelector(".news")
-    favoriteContainer.classList = []
-    favoriteContainer.classList.add("container__panel")
-    favoriteContainer.classList.add("news")
-    favoriteContainer.classList.add(e.detail.color)
+    const newsContainer = document.querySelector(".news")
+    newsContainer.classList.forEach(singleClass => {
+        let isPresent = false
+        e.detail.allPossibleColors.forEach(color => {
+            if (color === singleClass){
+                isPresent = true
+            }
+
+        });
+        if(isPresent){
+            newsContainer.classList.remove(singleClass)
+        }
+    })
+    newsContainer.classList.add(e.detail.color)
+
 })
+
 
 eventHub.addEventListener("borderSizeChosen", e => {
     const allNews = document.querySelectorAll(".newsItem")
@@ -34,9 +45,19 @@ eventHub.addEventListener("borderSizeChosen", e => {
 })
 
 eventHub.addEventListener("fontChosen", e => {
-    const scoreContainer = document.querySelector(".news")
-    scoreContainer.classList = []
-    scoreContainer.classList.add("container__panel")
-    scoreContainer.classList.add("news")
-    scoreContainer.classList.add(e.detail.fontSize)
-})
+
+    const newsContainer = document.querySelector(".news")
+    newsContainer.classList.forEach(singleClass => {
+        let isPresent = false
+        e.detail.allPossibleFontSizes.forEach(fontSize => {
+            if (fontSize === singleClass){
+                isPresent = true
+            }
+
+        });
+        if(isPresent){
+            newsContainer.classList.remove(singleClass)
+        }
+    })
+    newsContainer.classList.add(e.detail.fontSize)
+ })
