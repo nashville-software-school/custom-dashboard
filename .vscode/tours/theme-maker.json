@@ -1,0 +1,121 @@
+{
+  "title": "Theme Maker",
+  "description": "",
+  "steps": [
+    {
+      "file": "scripts/main.js",
+      "line": 4,
+      "description": "This line of code begins the journey of building the entire DOM of your data dashboard. Remember that JavaScript executes code from right to left, so the first thing that happens on this line of code is running the **`Dashboard`** component function that is imported from Dashboard.js"
+    },
+    {
+      "file": "scripts/Dashboard.js",
+      "line": 8,
+      "description": "The first instruction in the **Dashboard** component is to return a string. The first part of the string is built by invoking the **ThemeOptions** component function. Whatever is returned from that function will be placed first.\n\n```js\n${ThemeOptions()}\n```"
+    },
+    {
+      "file": "scripts/theme/ThemeOptions.js",
+      "line": 9,
+      "description": "The **ThemeOptions** component also returns a string. After an initial `<article>` element, you invoke the **ColorButtons** component function and place its return value as the child of the `<article>` element."
+    },
+    {
+      "file": "scripts/theme/ColorButtons.js",
+      "line": 35,
+      "description": "When this component is invoked, it returns a string full of HTML elements that display four buttons inside an article element. Each button will allow the user to change the background color of the lists of data once you set up the event listeners."
+    },
+    {
+      "file": "scripts/theme/ThemeOptions.js",
+      "line": 10,
+      "description": "Then three more component functions get invoked. Each of those components return some HTML strings that contain regular buttons, or radio buttons."
+    },
+    {
+      "file": "scripts/theme/FontButtons.js",
+      "line": 34,
+      "description": "Four regular buttons will be rendered next, which will allow the user to pick a font size for the application's theme."
+    },
+    {
+      "file": "scripts/theme/BorderButtons.js",
+      "line": 13,
+      "description": "This function returns a string with HTML in it to render three radio buttons which will allow the user to choose a font size for the application's theme"
+    },
+    {
+      "file": "scripts/theme/ToggleButtons.js",
+      "line": 21,
+      "description": "The last set of buttons rendered by **ThemeOptions** are for toggling the visibility of cards in each of the lists."
+    },
+    {
+      "file": "scripts/Dashboard.js",
+      "line": 8,
+      "description": "Then the **Dashboard** component invokes the list components for each of the types of data you want to render."
+    },
+    {
+      "file": "scripts/sports/ScoreList.js",
+      "line": 6,
+      "description": "When the **ScoreList** component function is invoked, the application state for scores are pulled in from the data provider, and that data is used to render the UI."
+    },
+    {
+      "file": "scripts/sports/ScoreProvider.js",
+      "line": 57,
+      "description": "The function imported from the data provider gives the **ScoreList** component a copy of the score state.\n\n```js\nscores.slice()\n```"
+    },
+    {
+      "file": "scripts/sports/ScoreList.js",
+      "line": 11,
+      "description": "The array of scores is iterated and each individual score is converted to an HTML representation. The resulting array of strings is the joined together into a single string to be rendered inside a parent article element.\n\n```js\n${scoreCollection.map(score => Score(score)).join(\"\")}\n```"
+    },
+    {
+      "file": "scripts/Dashboard.js",
+      "line": 9,
+      "description": "The remaining HTML lists of data are constructed and then injected into the string that **Dashboard** returns."
+    },
+    {
+      "file": "scripts/main.js",
+      "line": 4,
+      "description": "The entire HTML of the application, is set as the inner HTML of the `<main>` element - which is hard coded into the index.html file."
+    },
+    {
+      "file": "scripts/theme/ToggleButtons.js",
+      "line": 4,
+      "description": "An event listener is add to the `<main>` element in the HTML to handle click events."
+    },
+    {
+      "file": "scripts/theme/ToggleButtons.js",
+      "line": 5,
+      "description": "When a click event occurs, make sure this listener's code will only run when one of the visibility toggle buttons was clicked."
+    },
+    {
+      "file": "scripts/theme/ToggleButtons.js",
+      "line": 7,
+      "description": "Since each button's id attribute has the same pattern of _btnToggle_ then _--_ then a color name, you can use the _--_ to split the string and extract just the color using array deconstruction. If the user clicks on the button whose id is _btnToggle--red_, then the **prefix** variable will be assigned a value of \"btnToggle\" and the **chosenComponent** variable will be assigned a value of \"red\"."
+    },
+    {
+      "file": "scripts/theme/ToggleButtons.js",
+      "line": 10,
+      "description": "Then a custom event of our making is constructed. Since the user is choosing to toggle the visibility of a component, you name the event appropriately \"visibilityToggled\". In the detail payload of the event, you tell any listener exactly which component was chosen to be toggled.\n\n```js\nconst toggleEvent = new CustomEvent(\"visibilityToggled\", {\n    detail: {\n        chosenComponent: chosenComponent,\n    }\n})\n```"
+    },
+    {
+      "file": "scripts/theme/ToggleButtons.js",
+      "line": 17,
+      "description": "The custom event is then dispatched to the main element.\n\n```js\neventHub.dispatchEvent(toggleEvent)\n```"
+    },
+    {
+      "file": "scripts/favorites/FavoritesList.js",
+      "line": 20,
+      "description": "The **FavoritesList** component decides is cares that the user chose to toggle the visibility of a component so it listens for the \"visibilityToggled\" event.\n\n```js\neventHub.addEventListener(\"visibilityToggled\", e => {\n```"
+    },
+    {
+      "file": "scripts/favorites/FavoritesList.js",
+      "line": 8,
+      "description": "The initial state of the **FavoritesList** component declares that its children are visible by default.\n\n```js\nlet childrenVisible = true\n```"
+    },
+    {
+      "file": "scripts/favorites/FavoritesList.js",
+      "line": 22,
+      "description": "If the favorites button was clicked by the user, you change the visibility state of this component from _true_ to _false_."
+    },
+    {
+      "file": "scripts/favorites/FavoritesList.js",
+      "line": 26,
+      "description": "Then each of the child elements, which have a class of _favoriteItem_, has the _invisible_ CSS class added or removed, depending on the state variable _childrenVisible_."
+    }
+  ]
+}

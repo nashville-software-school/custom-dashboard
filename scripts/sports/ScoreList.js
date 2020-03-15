@@ -3,6 +3,7 @@ import { Score } from "./Score.js"
 
 const eventHub = document.querySelector("#container")
 let childrenVisible = true
+
 export const ScoreList = () => {
     const scores = useScores()
     return render(scores)
