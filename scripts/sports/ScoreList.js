@@ -26,22 +26,27 @@ eventHub.addEventListener("visibilityToggled", e => {
          allSportsItems.forEach(item => item.classList.toggle("invisible"))
      }
  })
-
+//listen for the colorChosen event
 eventHub.addEventListener("colorChosen", e => {
 
     const scoresContainer = document.querySelector(".scores")
+    //iterate over the classlist array on the scores container for each singleClass
     scoresContainer.classList.forEach(singleClass => {
+        //declare a variable to track if there is currently a color class present on the classList- initially false
         let isPresent = false
+        // iterate over the allPossibleColors property on the detail object from the event
         e.detail.allPossibleColors.forEach(color => {
+            // IF the current color in allPossibleColors is exactly the current singleClass, then set isPresent to true
             if (color === singleClass){
                 isPresent = true
             }
-
         });
-        if(isPresent){
+        //if the isPresent variable is true, remove the singleClass from the classList
+        if (isPresent) {
             scoresContainer.classList.remove(singleClass)
         }
     })
+    //add the appropriate class sent on the detail
     scoresContainer.classList.add(e.detail.color)
 
 })

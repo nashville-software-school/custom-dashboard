@@ -10,6 +10,7 @@ export const FavoritesList = () => {
     let borderState = "onepixel"
     let fontState = "small"
     let childrenVisible = true
+
     let favoriteItems = useFavorites()
 
     // Get reference to event hub
